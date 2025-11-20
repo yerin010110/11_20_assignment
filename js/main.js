@@ -71,7 +71,6 @@ function initNavHighlight() {
   if (!sections.length || !navLinks.length) return;
 
   function updateActiveLink() {
-    // 화면 중앙 기준으로 "가장 가까운 섹션"을 현재 섹션으로 판단
     const viewportCenter = window.innerHeight / 2;
 
     let currentId = sections[0].id;
@@ -79,7 +78,7 @@ function initNavHighlight() {
 
     sections.forEach((sec) => {
       const rect = sec.getBoundingClientRect();
-      const secCenter = rect.top + rect.height / 2; // 섹션의 화면상 중앙 위치
+      const secCenter = rect.top + rect.height / 2;
       const diff = Math.abs(secCenter - viewportCenter);
 
       if (diff < minDiff) {
@@ -90,13 +89,12 @@ function initNavHighlight() {
 
     // 메뉴 active 토글
     navLinks.forEach((link) => {
-      const hrefId = link.getAttribute("href").substring(1); // "#skills" → "skills"
+      const hrefId = link.getAttribute("href").substring(1);
       link.classList.toggle("active", hrefId === currentId);
     });
   }
 
   window.addEventListener("scroll", updateActiveLink);
-  // 처음 들어왔을 때도 한 번 실행
   updateActiveLink();
 }
 
@@ -208,7 +206,6 @@ function initThemeToggle() {
   const btn = document.getElementById("themeToggle");
   if (!btn) return;
 
-  // 저장된 모드 불러오기
   const saved = localStorage.getItem("theme");
   if (saved === "dark") {
     document.body.classList.add("dark");
