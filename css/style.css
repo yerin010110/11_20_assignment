@@ -1,0 +1,521 @@
+/* 1. 기본 설정 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #020617; /* 전체는 어두운 톤 */
+  color: #e5e7eb;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. 헤더 영역 */
+
+.site-header {
+  background: #020617;
+  color: #fff;
+  padding: 16px 24px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.brand-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+}
+
+.main-nav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.main-nav a:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.main-nav a.active {
+  background: #00c2ff;
+  color: #00111f;
+}
+
+.nav-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  margin: 4px 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* 햄버거 → X 모양 전환 */
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.theme-toggle {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #003f7f;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: #002f5f;
+}
+
+.greeting {
+  max-width: 960px;
+  margin: 10px auto 0;
+  font-size: 15px;
+}
+
+/* 3. 공통 레이아웃 */
+
+main {
+  flex: 1;
+}
+
+/* 기본 섹션(About 제외)은 밝은 배경 */
+.section {
+  padding: 60px 16px;
+  background: #ffffff;
+  color: #111827;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 26px;
+  margin-bottom: 16px;
+  border-left: 4px solid #005bac;
+  padding-left: 8px;
+}
+
+.section p {
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* 4. Hero(About) 섹션 – 어두운 배경 */
+
+.hero.section {
+  background: #020617;
+  color: #e5e7eb;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  text-align: center;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-avatar-wrap {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 4px solid #0a6b83;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  background: #0b1220;
+}
+
+.hero-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.hero-title {
+  font-size: 32px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.hero-highlight {
+  color: #00c2ff;
+  font-weight: 800;
+}
+
+.hero-subtitle {
+  max-width: 520px;
+  margin: 0 auto 24px;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.hero-button {
+  border: none;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: #00c2ff;
+  color: #00111f;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.hero-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* 모바일에서 글자 크기 조금 줄이기 */
+@media (max-width: 480px) {
+  .hero.section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .hero-title {
+    font-size: 26px;
+  }
+
+  .hero-avatar-wrap {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* 5. Skills 섹션 */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.skill-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.skill-card h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+/* 6. Projects 섹션 */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.project-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.project-card h3 {
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.project-card p {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.project-thumb {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* 7. Contact 섹션 */
+
+.contact-email {
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+/* 8. 푸터 */
+
+.site-footer {
+  padding: 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  background: #eef2f7;
+}
+
+/* 9. TOP 버튼 */
+
+#toTopBtn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  padding: 10px 16px;
+  font-size: 13px;
+  border: none;
+  border-radius: 999px;
+  background: #005bac;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 200;
+}
+
+#toTopBtn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 10. 스크롤 애니메이션 (reveal) */
+
+.section.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.section.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 11. 모달 */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* 라이트 모드 기본 모달 스타일 */
+.modal-content {
+  position: relative;
+  background: #ffffff;
+  padding: 24px 28px;
+  border-radius: 12px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  color: #111827; /* 기본 글자색 (진하게) */
+}
+
+.modal-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #111827; /* 제목 */
+}
+
+.modal-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #4b5563; /* 본문 */
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* 12. 다크 모드 */
+
+body.dark {
+  background: #0d1117;
+  color: #f0f6fc;
+}
+
+body.dark .site-header {
+  background: #010409;
+}
+
+body.dark .hero.section {
+  background: #010409;
+}
+
+/* 일반 섹션, 카드들 */
+body.dark .section,
+body.dark .skill-card,
+body.dark .project-card {
+  background: #161b22;
+  color: #f0f6fc;
+}
+
+/* 다크 모드에서 모달만 별도로 */
+body.dark .modal-content {
+  background: #161b22;
+  color: #f0f6fc;
+}
+
+body.dark .modal-title {
+  color: #f0f6fc;
+}
+
+body.dark .modal-body {
+  color: #cbd5f5;
+}
+
+body.dark .site-footer {
+  background: #0d1117;
+  color: #8b949e;
+}
+
+body.dark .main-nav a {
+  color: #f0f6fc;
+}
+
+body.dark .main-nav a.active {
+  background: #ffd166;
+  color: #111827;
+}
+
+body.dark #toTopBtn {
+  background: #ffd166;
+  color: #111827;
+}
+
+body.dark .theme-toggle {
+  background: #21262d;
+}
+
+/* 13. 반응형 헤더 (모바일 메뉴) */
+
+@media (max-width: 768px) {
+  .header-inner {
+    gap: 8px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 52px;
+    right: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #020617;
+    padding: 10px 12px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    display: none;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 8px 4px;
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+}

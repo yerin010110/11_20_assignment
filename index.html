@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Yerin" />
+    <meta name="description" content="우주에서 가장 뛰어난 AI 개발자" />
+
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" href="./images/logo.ico" type="image/x-icon" />
+
+    <title>Yerin's Website</title>
+
+    <!-- 스타일 -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- Font Awesome (아이콘용) -->
+    <script
+      src="https://kit.fontawesome.com/133260cff9.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- 자바스크립트 -->
+    <script src="./js/main.js" defer></script>
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- 헤더 영역 -->
+      <header class="site-header" id="top">
+        <div class="header-inner">
+          <a href="#top" class="brand">
+            <img
+              src="images/harrypotter.png"
+              alt="프로필 이미지"
+              class="brand-avatar"
+            />
+            <span>YERIN'S PORTFOLIO</span>
+          </a>
+
+          <!-- 햄버거 버튼 -->
+          <button
+            id="navToggle"
+            class="nav-toggle"
+            type="button"
+            aria-label="메뉴 열기"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <!-- 내비게이션 -->
+          <nav class="main-nav">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </nav>
+
+          <!-- 다크 모드 토글 -->
+          <button id="themeToggle" type="button" class="theme-toggle">
+            다크 모드
+          </button>
+        </div>
+
+        <p class="greeting">
+          <span id="greetingText"></span>
+          저는 김예린입니다
+        </p>
+      </header>
+
+      <!-- 메인 콘텐츠 -->
+      <main>
+        <!-- Hero / About 섹션 (About 메뉴가 여기로 이동) -->
+        <section id="about" class="hero section reveal">
+          <div class="container hero-inner">
+            <div class="hero-avatar-wrap">
+              <img
+                src="images/4. Younha.jpg"
+                alt="프로필 이미지"
+                class="hero-avatar"
+              />
+            </div>
+            <h1 class="hero-title">
+              안녕하세요
+              <br />
+              <span class="hero-highlight">예린</span>입니다.
+            </h1>
+            <p class="hero-subtitle">
+              AI 백엔드 개발자를 목표로 공부 중인 김예린입니다. Python,
+              JavaScript, DB를 활용한 프로젝트를 통해 문제를 분석하고 해결하는
+              과정을 즐깁니다.
+            </p>
+            <button
+              type="button"
+              class="hero-button"
+              onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+            >
+              연락처
+            </button>
+          </div>
+        </section>
+
+        <!-- 기술 섹션 -->
+        <section id="skills" class="section reveal">
+          <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <p>지금까지 학습하고 있는 기술들을 간단히 정리했습니다.</p>
+
+            <!-- 필요하면 majors 블록 추가 예정 -->
+
+            <div class="skills-grid">
+              <div class="skill-card">
+                <h3>Python</h3>
+                <p>
+                  기초 문법, 자료구조, OOP, 파일 입출력, 간단한 프로젝트 경험
+                </p>
+              </div>
+              <div class="skill-card">
+                <h3>Web</h3>
+                <p>HTML / CSS / JavaScript를 활용한 정적 웹 페이지 제작</p>
+              </div>
+              <div class="skill-card">
+                <h3>Database</h3>
+                <p>MySQL 기초, 테이블 설계, CRUD, Python 연동 실습 경험</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 프로젝트 섹션 -->
+        <section id="projects" class="section reveal">
+          <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <p>수업과 개인 공부를 통해 진행한 프로젝트들입니다.</p>
+
+            <div class="project-grid">
+              <article
+                class="project-card"
+                data-title="포트폴리오 웹사이트"
+                data-desc="HTML, CSS, JavaScript로 제작한 개인 포트폴리오 사이트입니다. 상단 메뉴 스크롤, 다크 모드, 모달, 스크롤 애니메이션 등의 인터랙션을 구현했습니다."
+              >
+                <h3>포트폴리오 웹사이트</h3>
+                <p>현재 보고 계신 사이트</p>
+                <img
+                  src="images/1. puppy.jpg"
+                  alt="프로젝트 대표 이미지"
+                  class="project-thumb"
+                />
+              </article>
+
+              <article
+                class="project-card"
+                data-title="Python + MySQL 단어장"
+                data-desc="Python과 MySQL을 연동하여 단어 등록, 검색, 수정, 삭제 기능을 구현한 콘솔 기반 단어장 프로그램입니다."
+              >
+                <h3>단어장 프로그램</h3>
+                <p>Python + MySQL CRUD</p>
+                <img
+                  src="images/2. puppy.jpg"
+                  alt="단어장 프로젝트 이미지"
+                  class="project-thumb"
+                />
+              </article>
+
+              <article
+                class="project-card"
+                data-title="Pygame Star Drift"
+                data-desc="Pygame 기반 미니 게임으로, 적을 피하고 아이템을 먹으며 점수를 올리는 OOP 구조 게임입니다."
+              >
+                <h3>Star Drift</h3>
+                <p>Pygame 미니 게임</p>
+                <img
+                  src="images/3. puppy.jpg"
+                  alt="게임 프로젝트 이미지"
+                  class="project-thumb"
+                />
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- 연락 섹션 -->
+        <section id="contact" class="section reveal">
+          <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <p>협업이나 문의는 아래 연락처로 부탁드립니다.</p>
+            <p class="contact-email">kim_yerin@example.com</p>
+            <p>
+              GitHub:
+              <a href="https://github.com/yerin010110" target="_blank">
+                github.com/yerin010110
+              </a>
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <!-- 푸터 -->
+      <footer class="site-footer">
+        <p>&copy; Yerin's - All rights reserved</p>
+      </footer>
+
+      <!-- TOP 버튼 -->
+      <button id="toTopBtn" type="button">TOP ▲</button>
+
+      <!-- 프로젝트 모달 -->
+      <div id="projectModal" class="modal">
+        <div class="modal-overlay" data-close="true"></div>
+        <div class="modal-content">
+          <button class="modal-close" type="button" data-close="true">×</button>
+          <h3 class="modal-title">프로젝트 제목</h3>
+          <p class="modal-body">프로젝트 상세 설명</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
